@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html> 
+    <html lang="ru"> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <title>Coffee blog</title> 
+        <style> 
+            body { 
+                font-family: Arial, sans-serif; 
+            } 
+            form { 
+                margin-bottom: 10px; 
+            } 
+            form div { 
+                margin-bottom: 30px; 
+            } 
+            table { 
+                width: 100%; 
+                border-collapse: collapse; 
+            } 
+            th, td { 
+                border: 3px solid pink; 
+                padding: 4px; 
+                text-align: left; 
+            } 
+        </style> 
+    </head> 
+    <body> 
+        <h1>Coffee blog</h1> 
+        <form id="coffeeForm"> 
+            <div> 
+                <label for="name">Название напитка</label> 
+                <input type="text" id="name"> 
+            </div> 
+            <div> 
+                <label for="type">Сорт кофе</label> 
+                <select id="type"> 
+                    <option>Гватемала</option> 
+                    <option>Эфиопия</option> 
+                    <option>Колумбия</option> 
+                </select> 
+            </div> 
+            <div> 
+                <label>Крепость обжарки</label> 
+                <div> 
+                    <input type="radio" id="strong" name="roast" value="Крепкая"> 
+                    <label for="strong">Крепкая</label> 
+                    <input type="radio" id="medium" name="roast" value="Средняя" checked> 
+                    <label for="medium">Средняя</label> 
+                    <input type="radio" id="light" name="roast" value="Легкая"> 
+                    <label for="light">Легкая</label> 
+                </div> 
+            </div> 
+            <div> 
+                <label for="image">Изображение</label> 
+                <input type="text" id="image" placeholder="http://site.com/img.png"> 
+            </div> 
+            <div> 
+                <label for="price">Стоимость напитка</label> 
+                <input type="number" id="price"> 
+            </div> 
+            <div> 
+                <label for="description">Описание</label> 
+                <textarea id="description"></textarea> 
+            </div> 
+            <button type="button" onclick="addCoffee()">Добавить напиток</button> 
+        </form> 
+         
+        <table id="coffeeTable"> 
+            <thead> 
+                <tr> 
+                    <th>Изображение</th> 
+                    <th>Название</th> 
+                    <th>Сорт</th> 
+                    <th>Крепость обжарки</th> 
+                    <th>Стоимость</th> 
+                    <th>Описание</th> 
+                </tr> 
+            </thead> 
+            <tbody> 
+            </tbody> 
+        </table> 
+     
+        <script> 
+            function addCoffee() { 
+                var table = document.getElementById("coffeeTable").getElementsByTagName('tbody')[0]; 
+                var newRow = table.insertRow(); 
+                newRow.innerHTML = ` 
+                    <td><img src="${document.getElementById('image').value}" width="50"></td> 
+                    <td>${document.getElementById('name').value}</td> 
+                    <td>${document.getElementById('type').value}</td> 
+                    <td>${document.querySelector('input[name="roast"]:checked').value}</td> 
+                    <td>${document.getElementById('price').value}</td> 
+                    <td>${document.getElementById('description').value}</td> 
+                `; 
+            } 
+        </script> 
+    </body> 
+    </html>
+        
+    </style>   
+    
+</body>
+</html>
